@@ -48,7 +48,6 @@ ZabIns()
   echo "Frontend Installation prerequisties"
   yum install yum-utils -y
   yum-config-manager --enable rhel-7-server-optional-rpms
-  yum install zabbix-server-mysql
   yum install zabbix-server-mysql mariadb mariadb-server -y
   systemctl enable mariadb
   systemctl start mariadb
