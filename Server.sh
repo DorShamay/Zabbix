@@ -46,14 +46,14 @@ ZabIns()
   echo "Let's add some Zabbix repositories "
   rpm -ivh https://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm
   echo "Frontend Installation prerequisties"
-  yum install yum-utils --noconfirm
+  yum install yum-utils -y
   yum-config-manager --enable rhel-7-server-optional-rpms
   yum install zabbix-server-mysql
-  yum install zabbix-server-mysql mariadb mariadb-server --noconfirm
+  yum install zabbix-server-mysql mariadb mariadb-server -y
   systemctl enable mariadb
   systemctl start mariadb
-  yum install zabbix-proxy-mysql --noconfirm
-  yum install zabbix-web-mysql --noconfirm
+  yum install zabbix-proxy-mysql -y
+  yum install zabbix-web-mysql -y
   echo "|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|"
   echo "Enter root SQL password"
   echo "|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|*|"
@@ -67,7 +67,7 @@ ZabIns()
 
   sed -i -e 's/# DBPassword=/DBPassword=zabbix/g' /etc/zabbix/zabbix_server.conf
 
-  yum insatll httpd --noconfirm
+  yum insatll httpd -y
   systemctl enable httpd
   systemctl enable zabbix-server
   systemctl restart zabbix-server
