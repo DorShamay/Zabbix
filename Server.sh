@@ -22,13 +22,13 @@ if [ $(id -u) != "0" ]; then
 Menu()
 {
 echo "Would you like to install Zabbix Server now? "
-select yesno in
+select yesno in "Yes" "No"
   do
     case $yesno in
-      yes)
+      Yes)
       ZabIns
       ;;
-      no)
+      No)
       echo "Are you sure? "
       ;;
       *)
@@ -72,22 +72,7 @@ ZabIns()
   systemctl enable zabbix-server
   systemctl restart zabbix-server
   systemctl restart httpd
-#  mysql_secure_installation <<_EOF_
-#  y
-#  password
-#  password
-#  y
-#  y
-#  y
-#  y
-#  _EOF_
-
-
-#sed -i -e 's/# php_value date.timezone Europe\/Riga/php_value date.timezone Asia\/Jerusalem/g' /etc/httpd/conf.d/zabbix.conf
-#systemctl restart httpd
-
-#setsebool -P httpd_can_connect_zabbix on
-#firewall-cmd --permanent --add-port=10050/tcp
-#firewall-cmd --permanent --add-port=10051/tcp
-
 }
+
+Checkroot
+Menu
